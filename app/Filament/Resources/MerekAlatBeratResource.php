@@ -19,6 +19,11 @@ class MerekAlatBeratResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    // Ubah label menu dan title resource
+    protected static ?string $label = 'Merek Alat Berat'; // Label menu
+    protected static ?string $pluralLabel = 'Merek Alat Berat'; // Label jamak
+    protected static ?string $title = 'Merek Alat Berat'; // Title resource
+
     public static function form(Form $form): Form
     {
         return $form

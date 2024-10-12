@@ -25,13 +25,19 @@ class UnitAlatBeratResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+     // Ubah label menu dan title resource
+     protected static ?string $label = 'Unit Alat Berat'; // Label menu
+     protected static ?string $pluralLabel = 'Unit Alat Berat'; // Label jamak
+     protected static ?string $title = 'Unit Alat Berat'; // Title resource
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nomor_body')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->unique('unit_alat_berats', 'nomor_body', ignoreRecord: true),
                 Forms\Components\Select::make('kategori_alat_berat_id')
                     ->relationship('kategoriAlatBerat', 'name')
                     ->required()

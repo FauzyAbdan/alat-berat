@@ -19,6 +19,11 @@ class KategoriAlatBeratResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    // Ubah label menu dan title resource
+    protected static ?string $label = 'Kategori Alat Berat'; // Label menu
+    protected static ?string $pluralLabel = 'Kategori Alat Berat'; // Label jamak
+    protected static ?string $title = 'Kategori Alat Berat'; // Title resource
+
     public static function form(Form $form): Form
     {
         return $form
