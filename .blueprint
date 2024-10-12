@@ -1,0 +1,28 @@
+created:
+    - database/factories/KategoriAlatBeratFactory.php
+    - database/factories/MerekAlatBeratFactory.php
+    - database/factories/TipeAlatBeratFactory.php
+    - database/factories/UnitAlatBeratFactory.php
+    - database/factories/ImageFactory.php
+    - database/migrations/2024_10_12_080007_create_kategori_alat_berats_table.php
+    - database/migrations/2024_10_12_080008_create_merek_alat_berats_table.php
+    - database/migrations/2024_10_12_080009_create_tipe_alat_berats_table.php
+    - database/migrations/2024_10_12_080010_create_unit_alat_berats_table.php
+    - database/migrations/2024_10_12_080011_create_images_table.php
+    - app/Models/KategoriAlatBerat.php
+    - app/Models/MerekAlatBerat.php
+    - app/Models/TipeAlatBerat.php
+    - app/Models/UnitAlatBerat.php
+    - app/Models/Image.php
+    - database/seeders/KategoriAlatBeratSeeder.php
+    - database/seeders/MerekSeeder.php
+    - database/seeders/TipeAlatBeratSeeder.php
+    - database/seeders/UnitAlatBeratSeeder.php
+    - database/seeders/ImageSeeder.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    KategoriAlatBerat: { name: 'string unique', relationships: { hasMany: TipeAlatBerat } }
+    MerekAlatBerat: { name: 'string unique', relationships: { hasMany: TipeAlatBerat } }
+    TipeAlatBerat: { name: 'string unique', kategori_alat_berat_id: id, merek_alat_berat_id: id, relationships: { belongsTo: 'KategoriAlatBerat, MerekAlatBerat', hasMany: UnitAlatBerat } }
+    UnitAlatBerat: { nomor_body: 'string unique', kategori_alat_berat_id: id, merek_alat_berat_id: id, tipe_alat_berat_id: id, featured_image: 'string nullable', relationships: { belongsTo: 'KategoriAlatBerat, MerekAlatBerat, TipeAlatBerat', hasMany: Image } }
+    Image: { path: string, unit_alat_berat_id: id, relationships: { belongsTo: UnitAlatBerat } }
